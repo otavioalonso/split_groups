@@ -43,7 +43,7 @@ def split_groups(participants, n_groups):
     return groups
 
 def mutate_selection(selection):
-    """ randomly picks 2 participants and swap their positions """
+    """ randomly picks 2 participants and swaps their positions """
     s = copy.deepcopy(selection)
     # Picks 2 participants at random
     a, b = random.sample(range(len(s)), 2)
@@ -64,7 +64,8 @@ def print_groups(groups):
         print('')
 
 def rank_diversity(groups, column_index):
-    """ ranks the diversity of the classifier in each group using max(counts)/sum(counts) as metric """
+    """ ranks the diversity of the classifier in each group
+        using max(counts)/sum(counts) as metric """
     rank = 0.
     for group in groups:
         # Gets specified column
@@ -76,7 +77,8 @@ def rank_diversity(groups, column_index):
     return rank/len(groups)
 
 def cluster(groups, column_index):
-    """ ranks the proximity of values in the specified column by comparing its standard deviation to the total std """
+    """ ranks the proximity of values in the specified column
+        by comparing its standard deviation to the total std """
     # The metric used here will be std(in this group)/std(in the whole list of participants)
     # Hopefully, this is a measure of how clustered the quantity is within groups
     rank = 0.
@@ -102,7 +104,9 @@ def optimize(participants, n_groups, iterations, get_score, simulated_annealing=
         groups = split_groups(s, n_groups)
         score = get_score(groups)
         # If simulated annealing is used, allow for bad jumps with probability exp(-(score-curr_score)/temperature)
-        if score <= curr_score or (simulated_annealing and np.exp(-(score-curr_score)/(float(i+1)/iterations)) <= np.random.rand()):
+        if score <= curr_score or \
+                (simulated_annealing and \
+                np.exp(-(score-curr_score)/(float(i+1)/iterations)) <= np.random.rand()):
             curr_score = score
             selection = s
         if score <= min_score:
@@ -115,9 +119,11 @@ def get_score(groups, mix_columns, cluster_columns):
     """ computes overall score """
     values = []
     if mix_columns is not None:
-        values.extend([float((c.split(':')[1]) if ':' in c else 1)*rank_diversity(groups, int(c.split(':')[0])) for c in mix_columns])
+        values.extend([float((c.split(':')[1]) if ':' in c else 1)* \
+                rank_diversity(groups, int(c.split(':')[0])) for c in mix_columns])
     if cluster_columns is not None:
-        values.extend([(float(c.split(':')[1]) if ':' in c else 1)*cluster(groups, int(c.split(':')[0])) for c in cluster_columns])
+        values.extend([(float(c.split(':')[1]) if ':' in c else 1)* \
+                cluster(groups, int(c.split(':')[0])) for c in cluster_columns])
     return np.average(values)
 
 def main(args):
@@ -125,7 +131,10 @@ def main(args):
 
     # If iterations is set, find the best solution
     if args.iterations:
-        best_groups, min_score = optimize(participants, args.n_groups, args.iterations, lambda g: get_score(g, args.mix_columns, args.cluster_columns), args.simulated_annealing)
+        best_groups, min_score = optimize(
+                participants, args.n_groups, args.iterations,
+                lambda g: get_score(g, args.mix_columns, args.cluster_columns),
+                args.simulated_annealing)
         print('Best score: {}'.format(min_score))
         print('')
         print_groups(best_groups)
@@ -136,7 +145,8 @@ def main(args):
         write_groups(best_groups, args.output)
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description = 'Takes a list of participants and splits into groups mixing/grouping specified categories.')
+    parser = argparse.ArgumentParser(description=
+            'Takes a list of participants and splits into groups mixing/grouping specified categories.')
 
     parser.add_argument('participants',
             help='tsv file containing list of participants.')
@@ -154,14 +164,21 @@ if __name__ == '__main__':
             help='Use simulated annealing.')
 
     parser.add_argument('-m', dest = 'mix_columns', nargs='+', required = False,
-            help='Mix groups by values found in the specified columns. Useful to separate people belonging to the same specified class. Use <column_index>:<weight> to specify a weight for each column. If you want to group classes instead of mixing them, use a negative weight.')
+            help='Mix groups by values found in the specified columns. \
+                    Useful to separate people belonging to the same specified class. \
+                    Use <column_index>:<weight> to specify a weight for each column. \
+                    If you want to group classes instead of mixing them, use a negative weight.')
 
     parser.add_argument('-c', dest = 'cluster_columns', nargs='+', required = False,
-            help='Cluster similar values found in the specified columns. Useful to get people with similar age together in the same group. Use <column_index>:<weight> to specify a weight for each column. If you want to disperse instead of clustering values, use a negative weight.')
+            help='Cluster similar values found in the specified columns. \
+                    Useful to get people with similar age together in the same group. \
+                    Use <column_index>:<weight> to specify a weight for each column. \
+                    If you want to disperse instead of clustering values, use a negative weight.')
 
     args = parser.parse_args()
 
     if args.mix_columns or args.cluster_columns:
-        assert args.iterations and args.iterations > 0, "If you set up -m or -c, you have to specify -i greater than zero."
+        assert args.iterations and args.iterations > 0, \
+                "If you set up -m or -c, you have to specify -i greater than zero."
 
     main(args)
