@@ -5,7 +5,7 @@ categories.
 
 ## Usage
 
-```bash
+```
 
 usage: split_groups.py [-h] -n N_GROUPS [-i ITERATIONS] [-o OUTPUT] [-a]
                        [-m MIX_COLUMNS [MIX_COLUMNS ...]]
