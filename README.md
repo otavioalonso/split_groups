@@ -5,27 +5,38 @@ categories.
 
 ## Usage
 
+```bash
+
+usage: split_groups.py [-h] -n N_GROUPS [-i ITERATIONS] [-o OUTPUT] [-a]
+                       [-m MIX_COLUMNS [MIX_COLUMNS ...]]
+                       [-c CLUSTER_COLUMNS [CLUSTER_COLUMNS ...]]
+                       participants
+
+Takes a list of participants and splits into groups mixing/grouping specified
+categories.
+
 positional arguments:
   participants          tsv file containing list of participants.
 
 optional arguments:
   -h, --help            show this help message and exit
-  -n N\_GROUPS           Number of groups to split.
+  -n N_GROUPS           Number of groups to split.
   -i ITERATIONS         Number of iterations in the optimization process.
   -o OUTPUT             Output file with group number column appended.
   -a                    Use simulated annealing.
-  -m MIX\_COLUMNS [MIX\_COLUMNS ...]
+  -m MIX_COLUMNS [MIX_COLUMNS ...]
                         Mix groups by values found in the specified columns.
                         Useful to separate people belonging to the same
                         specified class. Use <column_index>:<weight> to
                         specify a weight for each column. If you want to group
                         classes instead of mixing them, use a negative weight.
-  -c CLUSTER\_COLUMNS [CLUSTER\_COLUMNS ...]
+  -c CLUSTER_COLUMNS [CLUSTER_COLUMNS ...]
                         Cluster similar values found in the specified columns.
                         Useful to get people with similar age together in the
                         same group. Use <column_index>:<weight> to specify a
                         weight for each column. If you want to disperse
                         instead of clustering values, use a negative weight.
+```
 
 ## Example
 
