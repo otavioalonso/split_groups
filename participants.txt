@@ -1,0 +1,37 @@
+Apoio Fraterno	Conceição	Miramez	65
+Apoio Fraterno	Eblem	Miramez	55
+Apoio Fraterno	Inis	Miramez	50
+Apoio Fraterno	Pedro Santiago	GEFA	24
+Apoio Fraterno	Verônica Betônico	Vinha de Luz	40
+Artes	Frederico Antunes Marra	Vinha de Luz	23
+Artes	Nislayne	GEFA	21
+Coordenação Geral	Carol Canaan	Miramez	28
+Coordenação Geral	Hiroshi *-*	Luz da Esperança	26
+Coordenação Geral	Otavio Alonso	MEB/SP	25
+Coordenação Geral	Rogério	GEFA	33
+Coordenação Geral	Sílvia Maria *-*	GEFA	23
+Coordenação Geral	Yukimi	GEFA	25
+Divulgação	Ana Carolina Dias Cordeiro	GEFA	22
+Divulgação	Ana Clara Borges	Vinha de Luz	18
+Divulgação	Arthur	GFEFA	21
+Divulgação	Maria Clara Rezende	Amigos Fraternos	18
+Divulgação	Samuel	Vinha de Luz	19
+Estudos	Ana Caroline Paulino da Silva	Miramez	26
+Estudos	Bernardo	Vinha de Luz	22
+Estudos	Hayla	Vinha de Luz	29
+Estudos	Lorrana	 Miramez	23
+Estudos	Mathews de Moro	Vinha de Luz	18
+Integração	Lara Santos	Vinha de Luz	18
+Integração	Marcos Vinicius Pereira Silva	Luz da Esperança	21
+Integração	Mariana Elisa Vidal Silva	Vinha de Luz	18
+Integração	Vinicius Giarola Bernucci	GEFA	23
+Nutrição	João Pedro Zanandrez Mesquita Silva	Abrigo da Luz	21
+Nutrição	Zeinner	Miramez	19
+Secretaria	Ana Maria	Miramez	24
+Secretaria	Jasmin Carine do Carmo Froes	GEFA	22
+Secretaria	Luiza Lima Gonçalves (Luli)	Vinha de Luz	23
+Secretaria	Mahara	Miramez	23
+Secretaria	Nayara Marra	Amor e Trabalho	26
+Serviços Gerais	Hiago	Miramez	29
+Serviços Gerais	Iasmin	GEFA	22
+Serviços Gerais	Víctor Ferreira Soares Marques	Luz da Esperança	19
